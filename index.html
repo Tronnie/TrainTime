@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"> </script>
+</head>
+<body>
+<div class="jumbotron">
+  <h1 class="display-3">Train Scheduler</h1>
+  <p class="lead">Determine Next Train Arrival</p>
+    <table class="table table-inverse" >
+  <thead>
+    <tr>
+      <th>Train Name</th>
+      <th>Destination</th>
+      <th>First Train Time(HH:mm - military time)</th>
+      <th>Frequency (min) </th>
+      <th>Next Train</th>
+      <th>TBD ($)</th>
+    </tr>
+  </thead>
+  <tbody id="body">
+
+  </tbody>
+</table>
+  <p></p>
+
+</div>
+ <script type="text/javascript"></script>
+  <form role="form">
+              <div class="form-group">
+                <label for="name-input"> Train Name:</label>
+                <input class="form-control" id="name-input" type="text">
+              </div>
+              <div class="form-group">
+                <label for="destination-input">Destination:</label>
+                <input class="form-control" id="destination-input" type="text">
+              </div>
+              <div class="form-group">
+                <label for="startTime-input">Start Time:</label>
+                <input class="form-control" id="startTime-input" type="text">
+              </div>
+              <div class="form-group">
+                <label for="frequency-input">Frequency:</label>
+                <input class="form-control" id="Frequency-input" type="text">
+              </div>
+              <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+            </form>
+
+
+
+ <script src="https://code.jquery.com/jquery.js"></script>
+<script>
+  // Initialize Firebase
+
+    var config = {
+    apiKey: "AIzaSyAYyHUro2BOBlYkik-15i-UgXXbYNrNLnw",
+    authDomain: "trains-49354.firebaseapp.com",
+    databaseURL: "https://trains-49354.firebaseio.com",
+    projectId: "trains-49354",
+    storageBucket: "trains-49354.appspot.com",
+    messagingSenderId: "321988477926"
+    };
+    firebase.initializeApp(config);
+
+    // Create a variable to reference the database.
+   var database = firebase.database();
+    var trainName = "";
+    var destination = "";
+    var firstTrain = "";
+    var frequency = "";
+    var format = "HH:mm";
+    var nextTrain = moment(frequency, format);
+
+     // Capture Button Click
+    $("#add-user").on("click", function(event) {
+      event.preventDefault();
+    trainName = $("#name-input").val().trim();
+    destination = $("#destination-input").val().trim();
+    firstTrain = $("#startTime-input").val().trim();
+    frequency = $("#frequency-input").val().trim();
+    database.ref().push({
+        trainName: trainName,
+        destination: destination,
+        firstTrain: firstTrain,
+        frequency: frequency,
+        // dateAdded: firebase.database.ServerValue.TIMESTAMP
+
+      });
+    $("#add-user").val('');
+    });
+    database.ref().on("child_added", function(childSnapshot) {
+        var childSnapshot = childSnapshot.val();
+        console.log(childSnapshot.trainName);
+        console.log(childSnapshot.destination);
+        console.log(childSnapshot.firstTrain);
+        console.log(childSnapshot.nextTrain);
+        var months = moment(nextTrain).diff(moment(), "minutes");
+      $("#body").append("<tr><td>" + childSnapshot.trainName + "</td><td>" + childSnapshot.destination + "</td><td> " + childSnapshot.firstTrain +
+        " </td><td>" + minutes + " </td><td>"+ childSnapshot.frequency + " </td></tr>");
+
+})
+
+</script>
+</body>
+</html>
