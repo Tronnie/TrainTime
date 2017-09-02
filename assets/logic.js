@@ -1,5 +1,5 @@
 // Check that html and js are connected
-console.log("docs are talking");
+console.log("html & js are talking");
 
 // Initialize Firebase
     var config = {
@@ -64,6 +64,7 @@ console.log("docs are talking");
 
           var currentTime = moment().format("HH:mm");
           console.log("the time now: " + currentTime);
+          $(".timeNow").html("The current time is: " + currentTime);
 
           var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
           console.log("DIFFERENCE IN TIME: " + diffTime);
