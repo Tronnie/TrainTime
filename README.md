@@ -9,11 +9,11 @@
 
 
 ## Methodology
-  * The Shell: basic html, bootstrap for design, set up github repo, add links to libraries.
+  1. The Shell: basic html, bootstrap for design, set up github repo, add links to libraries.
 
-  * Set up Firebase database
+  2. Set up Firebase database
 
-  * Javascript
+  3. Javascript
         *  Firebase configuration & initialize.
         *  Global Variables.
         *  Capture information entered at button click.
