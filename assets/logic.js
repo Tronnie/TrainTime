@@ -62,6 +62,10 @@ console.log("html & js are talking");
           var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
           console.log("!!is first conversion " +firstTimeConverted);
 
+          var currentDate = moment().format("dddd" +","+ " MMMM Do YYYY");
+          console.log("the time now: " + currentDate);
+          $(".dateNow").html("Today is: " + currentDate);
+
           var currentTime = moment().format("HH:mm");
           console.log("the time now: " + currentTime);
           $(".timeNow").html("The current time is: " + currentTime);

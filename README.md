@@ -14,11 +14,11 @@
   * 2.  Set up Firebase database
 
   * 3.  The Javascript
-        a.  Firebase configuration & initialize.
-        b.  Global Variables.
-        c.  Capture information entered at button click.
-        d.  Push information to firebase.
-        e.  Clear the input form after push.
-        f.  "Child Added" to keep all the new information instead of replacing.
-        g.  Calculations using moment.js.
-        h.  Update the html.
+        *  Firebase configuration & initialize.
+        *  Global Variables.
+        *  Capture information entered at button click.
+        *  Push information to firebase.
+        *  Clear the input form after push.
+        *  "Child Added" to keep all the new information instead of replacing.
+        *  Calculations using moment.js.
+        *  Update the html.
