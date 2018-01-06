@@ -1,4 +1,5 @@
-# TrainTime
+# TrainTime: Trasnportation Scheduler
+Using Moment.JS, this application calculates the estimated arrival time of the transportation mode of your choice.  The application retrieves the current time and produces an expected time of arrival based on your input.  The data is stored in Firebase for easy retrieval.  
 
 ## Instructions
 
@@ -22,3 +23,11 @@
         *  "Child Added" to keep all the new information instead of replacing.
         *  Calculations using moment.js.
         *  Update the html.
+
+![Train!](./assets/images/Train!.png)
+
+
+
+**Thank you for your Attention!**
+
+Gail Izaguirre (C) 2017.  All Rights Reserved.
